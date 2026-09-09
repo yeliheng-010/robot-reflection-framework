@@ -1,0 +1,49 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "evidence_id": {
+      "title": "Evidence Id",
+      "type": "string"
+    },
+    "source": {
+      "const": "demo_fixture",
+      "default": "demo_fixture",
+      "title": "Source",
+      "type": "string"
+    },
+    "claim": {
+      "const": "object_relative_displacement",
+      "default": "object_relative_displacement",
+      "title": "Claim",
+      "type": "string"
+    },
+    "value": {
+      "minimum": 0,
+      "title": "Value",
+      "type": "number"
+    },
+    "threshold": {
+      "default": 0.02,
+      "exclusiveMinimum": 0,
+      "title": "Threshold",
+      "type": "number"
+    },
+    "unit": {
+      "const": "m",
+      "default": "m",
+      "title": "Unit",
+      "type": "string"
+    },
+    "frame_id": {
+      "const": "gripper_frame",
+      "default": "gripper_frame",
+      "title": "Frame Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "value"
+  ],
+  "title": "Evidence",
+  "type": "object"
+}

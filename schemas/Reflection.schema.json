@@ -1,0 +1,91 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "reflection_id": {
+      "title": "Reflection Id",
+      "type": "string"
+    },
+    "feedback_ref": {
+      "title": "Feedback Ref",
+      "type": "string"
+    },
+    "action_id": {
+      "title": "Action Id",
+      "type": "string"
+    },
+    "base_revision": {
+      "minimum": 1,
+      "title": "Base Revision",
+      "type": "integer"
+    },
+    "decision": {
+      "enum": [
+        "revise",
+        "stop"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "hypothesis": {
+      "minLength": 1,
+      "title": "Hypothesis",
+      "type": "string"
+    },
+    "hypothesis_status": {
+      "const": "untested",
+      "default": "untested",
+      "title": "Hypothesis Status",
+      "type": "string"
+    },
+    "reason": {
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Evidence Refs",
+      "type": "array"
+    },
+    "parameter": {
+      "const": "lift_speed_m_s",
+      "default": "lift_speed_m_s",
+      "title": "Parameter",
+      "type": "string"
+    },
+    "old_speed_m_s": {
+      "maximum": 0.1,
+      "minimum": 0.01,
+      "title": "Old Speed M S",
+      "type": "number"
+    },
+    "new_speed_m_s": {
+      "anyOf": [
+        {
+          "maximum": 0.1,
+          "minimum": 0.01,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "New Speed M S"
+    }
+  },
+  "required": [
+    "feedback_ref",
+    "action_id",
+    "base_revision",
+    "decision",
+    "hypothesis",
+    "reason",
+    "evidence_refs",
+    "old_speed_m_s"
+  ],
+  "title": "Reflection",
+  "type": "object"
+}

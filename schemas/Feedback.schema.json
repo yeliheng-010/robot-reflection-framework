@@ -1,0 +1,190 @@
+{
+  "$defs": {
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "source": {
+          "const": "demo_fixture",
+          "default": "demo_fixture",
+          "title": "Source",
+          "type": "string"
+        },
+        "claim": {
+          "const": "object_relative_displacement",
+          "default": "object_relative_displacement",
+          "title": "Claim",
+          "type": "string"
+        },
+        "value": {
+          "minimum": 0,
+          "title": "Value",
+          "type": "number"
+        },
+        "threshold": {
+          "default": 0.02,
+          "exclusiveMinimum": 0,
+          "title": "Threshold",
+          "type": "number"
+        },
+        "unit": {
+          "const": "m",
+          "default": "m",
+          "title": "Unit",
+          "type": "string"
+        },
+        "frame_id": {
+          "const": "gripper_frame",
+          "default": "gripper_frame",
+          "title": "Frame Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "State": {
+      "additionalProperties": false,
+      "properties": {
+        "state_id": {
+          "title": "State Id",
+          "type": "string"
+        },
+        "environment": {
+          "const": "demo",
+          "default": "demo",
+          "title": "Environment",
+          "type": "string"
+        },
+        "epoch": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Epoch",
+          "type": "integer"
+        },
+        "frame_id": {
+          "const": "robot_base",
+          "default": "robot_base",
+          "title": "Frame Id",
+          "type": "string"
+        },
+        "observed_at": {
+          "title": "Observed At",
+          "type": "string"
+        },
+        "object_id": {
+          "default": "cube-01",
+          "title": "Object Id",
+          "type": "string"
+        },
+        "holding": {
+          "default": false,
+          "title": "Holding",
+          "type": "boolean"
+        }
+      },
+      "title": "State",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "feedback_id": {
+      "title": "Feedback Id",
+      "type": "string"
+    },
+    "trial_id": {
+      "title": "Trial Id",
+      "type": "string"
+    },
+    "action_id": {
+      "title": "Action Id",
+      "type": "string"
+    },
+    "action_revision": {
+      "minimum": 1,
+      "title": "Action Revision",
+      "type": "integer"
+    },
+    "before_state_ref": {
+      "title": "Before State Ref",
+      "type": "string"
+    },
+    "after_state": {
+      "$ref": "#/$defs/State"
+    },
+    "status": {
+      "enum": [
+        "success",
+        "failure",
+        "unknown"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "stage": {
+      "const": "lifting",
+      "default": "lifting",
+      "title": "Stage",
+      "type": "string"
+    },
+    "error_code": {
+      "anyOf": [
+        {
+          "enum": [
+            "OBJECT_SLIP",
+            "MISSING_EVIDENCE"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error Code"
+    },
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      },
+      "title": "Evidence",
+      "type": "array"
+    },
+    "measured_grip_force_n": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Measured Grip Force N"
+    },
+    "missing_evidence": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Missing Evidence",
+      "type": "array"
+    }
+  },
+  "required": [
+    "action_id",
+    "action_revision",
+    "before_state_ref",
+    "after_state",
+    "status"
+  ],
+  "title": "Feedback",
+  "type": "object"
+}

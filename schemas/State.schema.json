@@ -1,0 +1,43 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "state_id": {
+      "title": "State Id",
+      "type": "string"
+    },
+    "environment": {
+      "const": "demo",
+      "default": "demo",
+      "title": "Environment",
+      "type": "string"
+    },
+    "epoch": {
+      "default": 1,
+      "minimum": 1,
+      "title": "Epoch",
+      "type": "integer"
+    },
+    "frame_id": {
+      "const": "robot_base",
+      "default": "robot_base",
+      "title": "Frame Id",
+      "type": "string"
+    },
+    "observed_at": {
+      "title": "Observed At",
+      "type": "string"
+    },
+    "object_id": {
+      "default": "cube-01",
+      "title": "Object Id",
+      "type": "string"
+    },
+    "holding": {
+      "default": false,
+      "title": "Holding",
+      "type": "boolean"
+    }
+  },
+  "title": "State",
+  "type": "object"
+}

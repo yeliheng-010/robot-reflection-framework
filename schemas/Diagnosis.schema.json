@@ -1,0 +1,47 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "diagnosis_id": {
+      "title": "Diagnosis Id",
+      "type": "string"
+    },
+    "feedback_ref": {
+      "title": "Feedback Ref",
+      "type": "string"
+    },
+    "symptom": {
+      "title": "Symptom",
+      "type": "string"
+    },
+    "hypotheses": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Hypotheses",
+      "type": "array"
+    },
+    "evidence_refs": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Evidence Refs",
+      "type": "array"
+    },
+    "unknowns": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unknowns",
+      "type": "array"
+    }
+  },
+  "required": [
+    "feedback_ref",
+    "symptom",
+    "hypotheses",
+    "evidence_refs",
+    "unknowns"
+  ],
+  "title": "Diagnosis",
+  "type": "object"
+}

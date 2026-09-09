@@ -1,0 +1,89 @@
+{
+  "$defs": {
+    "Action": {
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "title": "Action Id",
+          "type": "string"
+        },
+        "revision": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        },
+        "state_ref": {
+          "default": "unbound",
+          "title": "State Ref",
+          "type": "string"
+        },
+        "skill": {
+          "const": "grasp",
+          "default": "grasp",
+          "title": "Skill",
+          "type": "string"
+        },
+        "object_id": {
+          "default": "cube-01",
+          "title": "Object Id",
+          "type": "string"
+        },
+        "lift_speed_m_s": {
+          "default": 0.08,
+          "maximum": 0.1,
+          "minimum": 0.01,
+          "title": "Lift Speed M S",
+          "type": "number"
+        }
+      },
+      "title": "Action",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "enum": [
+        "success",
+        "stopped",
+        "budget_exhausted",
+        "component_error"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "reason": {
+      "title": "Reason",
+      "type": "string"
+    },
+    "trials": {
+      "minimum": 0,
+      "title": "Trials",
+      "type": "integer"
+    },
+    "reflections": {
+      "minimum": 0,
+      "title": "Reflections",
+      "type": "integer"
+    },
+    "environment": {
+      "const": "demo",
+      "default": "demo",
+      "title": "Environment",
+      "type": "string"
+    },
+    "final_action": {
+      "$ref": "#/$defs/Action"
+    }
+  },
+  "required": [
+    "status",
+    "reason",
+    "trials",
+    "reflections",
+    "final_action"
+  ],
+  "title": "Outcome",
+  "type": "object"
+}
